@@ -481,7 +481,7 @@ netdev_setup_slicing(struct netdev *netdev, uint16_t num_queues)
     /* remove any previous queue configuration for this device */
     error = do_remove_qdisc(netdev->name);
     if (error) {
-        return error;
+        //return error;  May be there was no queue setting existing previously (tc qdisc add dev )
     }
 
     /* Configure tc queue discipline to allow slicing queues */
