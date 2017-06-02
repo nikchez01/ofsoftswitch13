@@ -1617,7 +1617,7 @@ ofl_msg_unpack_queue_get_config_reply(struct ofp_header const *src, size_t *len,
 	*   Previously, dpctl was showing only 1 queue even if more than 1 queues are configured. */
 	len1=*len-(sizeof(struct ofp_packet_queue)+sizeof(struct ofp_queue_prop_min_rate))*((int)dr->queues_num-1-i);
 	len2=*len-(sizeof(struct ofp_packet_queue)+sizeof(struct ofp_queue_prop_min_rate))*((int)dr->queues_num-1-i);
-        error = ofl_structs_packet_queue_unpack(queue, len, &(dr->queues[i]));
+        error = ofl_structs_packet_queue_unpack(queue, &len1, &(dr->queues[i]));
         if (error) {
             OFL_UTILS_FREE_ARR_FUN(dr->queues, i,
                                    ofl_structs_free_packet_queue);
